@@ -1,0 +1,1 @@
+exports.words = require('./words.js');
