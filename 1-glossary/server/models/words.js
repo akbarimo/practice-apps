@@ -1,9 +1,8 @@
 const db = require('../database/db.js')
 
-const getData = async (callback) => {
+const getData = async (data) => {
   try {
-    const test = await db.findData();
-    console.log(test);
+    return await db.findData(data);
   } catch (err) {
     console.error(err);
   }
@@ -17,19 +16,25 @@ const createData = async (data) => {
   }
 };
 
-const deleteData = () => {
-
+const updateData = async (data) => {
+  try {
+    return await db.findAndCreate(data);
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-const updateData = async (data, callback) => {
-  console.log(data);
-  const result = await db.findAndCreate(data);
-  callback(null, result);
+const removeData = async (data) => {
+  try {
+    return await db.removeData(data);
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 module.exports = {
   getData,
   createData,
-  deleteData,
+  removeData,
   updateData
 }

@@ -1,10 +1,10 @@
 /**
- * 
+ *
  * Based on Josh Comeau's CSS Reset: https://www.joshwcomeau.com/css/custom-css-reset/.
- * 
+ *
  * Feel free to edit this file as needed.
- * 
- */ 
+ *
+ */
 
 *,
 *::before,
@@ -57,4 +57,84 @@ main {
   max-width: 840px;
   padding: 16px;
   margin: auto;
+}
+
+
+
+/* Form Styling */
+
+#form-box {
+  display: grid;
+  justify-content: left;
+}
+
+.input-field {
+  display: grid;
+  justify-content: right;
+}
+
+.input-label {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+#word-input {
+  width: 15em;
+  height: 2em;
+}
+
+#definition-input {
+  width: 15em;
+  height: 2em;
+}
+
+#form-button {
+  margin-top: 0.5em;
+  font-size: 1em;
+  font-weight: bold;
+  background-color: rgb(219, 219, 122);
+  width: 15em;
+  height: 2em;
+}
+
+/* Search Bar Styling */
+
+#search-bar {
+  display: grid;
+  justify-content: center;
+}
+
+#search-button {
+  font-size: 1em;
+  font-weight: bold;
+  background-color: rgb(219, 219, 122);
+  width: 5em;
+  height: 2em;
+}
+
+#search-input {
+  width: 25em;
+  height: 2em;
+}
+
+/* Glossary Styling */
+
+#glossary-entry {
+  padding: 10px;
+}
+
+#glossary-word {
+  font-weight: bold;
+}
+
+#glossary-definition {
+  font-style: italic;
+}
+
+#edit-button, #delete-button {
+  font-size: 1em;
+  font-weight: bold;
+  background-color: rgb(219, 219, 122);
+  width: 4em;
+  height: 2em;
 }

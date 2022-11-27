@@ -2,8 +2,8 @@ const {words} = require('../models/index.js')
 
 const get = async (req, res) => {
   try {
-    const data = await words.getData();
-    res.sendStatus(200).send(data);
+    const data = await words.getData(req.body);
+    res.status(200).send(data);
   } catch (err) {
     console.error(err);
     res.sendStatus(404);
@@ -16,20 +16,30 @@ const post = async (req, res) => {
     res.sendStatus(201);
   } catch (err) {
     console.error(err);
-    res.sendStatus(404);
+    res.sendStatus(400);
   }
 };
 
-const update = (req, res) => {
-  console.log(req.body);
-  res.sendStatus(204).send();
+const update = async (req, res) => {
+  try {
+    await words.updateData(req.body)
+    res.sendStatus(202);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(400);
+  }
 };
 
-const remove = (req, res) => {
-  console.log(req.body);
-  res.sendStatus(203).send();
+const remove = async (req, res) => {
+  try {
+    console.log(req.body);
+    await words.removeData(req.body);
+    res.sendStatus(200);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(404);
+  }
 };
-
 
 module.exports = {
   get,

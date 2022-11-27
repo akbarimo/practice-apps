@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Prints out routes & requests to my console
-app.use('dev', morgan);
+app.use(morgan('dev'));
 
 // Establish a connection
 app.use(router);

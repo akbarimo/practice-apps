@@ -4,29 +4,39 @@ mongoose.connect('mongodb://localhost/urban', {
   useUnifiedTopology: true
 });
 
-const dictionarySchema = mongoose.Schema({
-  id: Number,
+const dictionarySchema = new mongoose.Schema({
   word: String,
   definition: String,
 });
 
 const Glossary = mongoose.model(process.env.DB_NAME, dictionarySchema);
-const db = new Glossary();
 
 const findAndCreate = async (doc) => {
-  const query = {id: doc.id};
+  const query = {word: doc.word};
   const docToUpdate = { $set: doc};
   const options = { new: true, upsert: true}
 
-  return await Glossary.findOneAndUpdate(query, docToUpdate, options)
+  try {
+    const dbResponse = await Glossary.findOneAndUpdate(query, docToUpdate, options);
+    Promise.resolve(dbResponse);
+  } catch (err) {
+    Promise.reject(err);
+  }
+
 };
 
-const findData = async () => {
-  return await Glossary.find();
+const findData = async (data) => {
+  return await Glossary.find(data);
 };
+
+const removeData = async (doc) => {
+  console.log(doc);
+  return await Glossary.deleteOne(doc);
+}
 
 module.exports = {
-  db,
+  Glossary,
   findAndCreate,
-  findData
-}
+  findData,
+  removeData
+};
