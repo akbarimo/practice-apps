@@ -12,12 +12,12 @@ const App = () => {
     axios.get('/words', data)
       .then((response) => {
         const dbLatest = response.data;
-        setWords(dbLatest);
-        return dbLatest;
-      })
-      .then((data) => {
-        setRenderedWords(data);
-      });
+          setWords(dbLatest);
+          return dbLatest;
+        })
+        .then((data) => {
+          setRenderedWords(data);
+        });
   };
 
   useEffect(() => {
@@ -96,14 +96,3 @@ export default App;
   // useEffect(() => {
   //   seedDatabase();
   // }, []);
-
-
-
-
-
-
-
-
-
-
-

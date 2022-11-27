@@ -11,5 +11,4 @@ const Glossary = ({renderedWords, getLatest, isForm, setIsForm}) => {
 
   };
 
-
 export default Glossary;

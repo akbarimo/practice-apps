@@ -14,7 +14,7 @@ const Glossary = mongoose.model(process.env.DB_NAME, dictionarySchema);
 const findAndCreate = async (doc) => {
   const query = {word: doc.word};
   const docToUpdate = { $set: doc};
-  const options = { new: true, upsert: true}
+  const options = { new: true, upsert: true }
 
   try {
     const dbResponse = await Glossary.findOneAndUpdate(query, docToUpdate, options);
